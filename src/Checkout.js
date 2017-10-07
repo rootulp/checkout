@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import { NumericInput } from "@blueprintjs/core";
 import { validCardNumber, validCardExpiration } from "./InputValidation";
 
@@ -8,11 +9,11 @@ class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: null,
-      cardNumber: null,
-      cardSecurityCode: null,
-      expirationMonth: null,
-      expirationYear: null
+      name: "",
+      cardNumber: "",
+      cardSecurityCode: "",
+      expirationMonth: "",
+      expirationYear: ""
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
