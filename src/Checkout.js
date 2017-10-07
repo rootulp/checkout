@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { validCardNumber, validCardExpiration } from "./InputValidation"
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -83,50 +83,6 @@ class Checkout extends React.Component {
       </div>
     );
   }
-}
-
-const validCardNumber = (cardNumber, cardSecurityCode) => {
-  return validVisa(cardNumber, cardSecurityCode) || validAmericanExpress(cardNumber, cardSecurityCode)
-}
-
-const validVisa = (cardNumber, cardSecurityCode) => {
-  return validVisaCardNumber(cardNumber) && validVisaCardSecurityCode(cardSecurityCode);
-}
-
-const validAmericanExpress = (cardNumber, cardSecurityCode) => {
-  return validAmericanExpressCardNumber(cardNumber) && validAmericanExpressCardSecurityCode(cardSecurityCode);
-}
-
-const validVisaCardNumber = (cardNumber) => {
-  if (cardNumber) {
-    return cardNumber.length === 16 && cardNumber.startsWith("4");
-  }
-  return false
-}
-
-const validAmericanExpressCardNumber = (cardNumber) => {
-  if (cardNumber) {
-    return cardNumber.length === 15 && 
-          (cardNumber.startsWith("34") ||
-            cardNumber.startsWith("37"));
-  }
-  return false
-}
-
-const validVisaCardSecurityCode = (cardSecurityCode) => {
-  return cardSecurityCode ? cardSecurityCode.length === 4 : false
-}
-
-const validAmericanExpressCardSecurityCode = (cardSecurityCode) => {
-  console.log(cardSecurityCode.length)
-  return cardSecurityCode ? cardSecurityCode.length === 3 : false
-}
-
-const validCardExpiration = (expirationMonth, expirationYear) => {
-  const expirationDate = new Date(expirationYear, expirationMonth)
-  const today = new Date()
-
-  return today < expirationDate;
 }
 
 export default Checkout;
