@@ -1,5 +1,5 @@
-import React from 'react';
-import { validCardNumber, validCardExpiration } from "./InputValidation"
+import React from "react";
+import { validCardNumber, validCardExpiration } from "./InputValidation";
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -22,10 +22,15 @@ class Checkout extends React.Component {
 
   renderErrors() {
     if (!validCardNumber(this.state.cardNumber, this.state.cardSecurityCode)) {
-      return "Invalid Card Number"
+      return "Invalid Card Number";
     }
-    if (!validCardExpiration(this.state.expirationMonth, this.state.expirationYear)) {
-      return "Invalid Expiration Date"
+    if (
+      !validCardExpiration(
+        this.state.expirationMonth,
+        this.state.expirationYear
+      )
+    ) {
+      return "Invalid Expiration Date";
     }
   }
 
@@ -40,7 +45,8 @@ class Checkout extends React.Component {
               name="name"
               type="input"
               checked={this.state.name}
-              onChange={this.handleInputChange} />
+              onChange={this.handleInputChange}
+            />
           </label>
           <br />
           <label>
@@ -49,7 +55,8 @@ class Checkout extends React.Component {
               name="cardNumber"
               type="input"
               value={this.state.cardNumber}
-              onChange={this.handleInputChange} />
+              onChange={this.handleInputChange}
+            />
           </label>
           <br />
           <label>
@@ -58,16 +65,18 @@ class Checkout extends React.Component {
               name="cardSecurityCode"
               type="input"
               value={this.state.cardSecurityCode}
-              onChange={this.handleInputChange} />
+              onChange={this.handleInputChange}
+            />
           </label>
           <br />
           <label>
-            Expiration Month 
+            Expiration Month
             <input
               name="expirationMonth"
               type="input"
               value={this.state.expirationMonth}
-              onChange={this.handleInputChange} />
+              onChange={this.handleInputChange}
+            />
           </label>
           <label>
             Expiration Year
@@ -75,7 +84,8 @@ class Checkout extends React.Component {
               name="expirationYear"
               type="input"
               value={this.state.expirationYear}
-              onChange={this.handleInputChange} />
+              onChange={this.handleInputChange}
+            />
           </label>
           <br />
           <input type="submit" value="Submit" />
