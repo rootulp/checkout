@@ -1,3 +1,15 @@
+export const validCard = (
+  cardNumber,
+  cardSecurityCode,
+  expirationYear,
+  expirationMonth
+) => {
+  return (
+    validCardNumber(cardNumber, cardSecurityCode) &&
+    validCardExpiration(expirationYear, expirationMonth)
+  );
+};
+
 export const validCardNumber = (cardNumber, cardSecurityCode) => {
   return (
     validVisa(cardNumber, cardSecurityCode) ||

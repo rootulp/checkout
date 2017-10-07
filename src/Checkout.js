@@ -6,11 +6,11 @@ class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      cardNumber: "",
-      cardSecurityCode: "",
-      expirationMonth: "",
-      expirationYear: ""
+      name: null,
+      cardNumber: null,
+      cardSecurityCode: null,
+      expirationMonth: null,
+      expirationYear: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -22,10 +22,13 @@ class Checkout extends React.Component {
     });
   }
 
-  handleValueChange(valueAsNumber, valueAsString) {
-    this.setState({
-      expirationYear: valueAsString
-    });
+  disableSubmit() {
+    return !validCardNumber(
+      this.state.cardNumber,
+      this.state.cardSecurityCode,
+      this.state.expirationYear,
+      this.state.expirationMonth
+    );
   }
 
   renderErrors() {
@@ -103,8 +106,12 @@ class Checkout extends React.Component {
                 onChange={this.handleInputChange}
               />
             </div>
+
             <input
-              className="pt-button pt-large pt-intent-primary"
+              className={
+                "pt-button pt-large pt-intent-primary " +
+                (this.disableSubmit ? "pt-disabled" : "")
+              }
               type="submit"
               value="Submit"
             />
