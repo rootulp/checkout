@@ -1,4 +1,5 @@
 import React from "react";
+import { NumericInput } from "@blueprintjs/core";
 import { validCardNumber, validCardExpiration } from "./InputValidation";
 
 class Checkout extends React.Component {
@@ -11,12 +12,20 @@ class Checkout extends React.Component {
       expirationMonth: "",
       expirationYear: ""
     };
+
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleValueChange = this.handleValueChange.bind(this);
   }
 
   handleInputChange(event) {
     this.setState({
       [event.target.name]: event.target.value
+    });
+  }
+
+  handleValueChange(valueAsNumber, valueAsString) {
+    this.setState({
+      expirationYear: valueAsString
     });
   }
 
@@ -39,64 +48,63 @@ class Checkout extends React.Component {
       <div className="Checkout">
         <span>{this.renderErrors()}</span>
         <form>
-          <div class="pt-control-group pt-vertical">
-            <div class="pt-input-group pt-large">
-              <span class="pt-icon pt-icon-person" />
+          <div className="pt-control-group pt-vertical">
+            <div className="pt-input-group pt-large">
+              <span className="pt-icon pt-icon-person" />
               <input
                 name="name"
                 type="text"
-                class="pt-input"
+                className="pt-input"
                 placeholder="Name"
                 value={this.state.value}
                 onChange={this.handleInputChange}
               />
             </div>
-            <div class="pt-input-group pt-large">
-              <span class="pt-icon pt-icon-credit-card" />
+            <div className="pt-input-group pt-large">
+              <span className="pt-icon pt-icon-credit-card" />
               <input
                 name="cardNumber"
                 type="text"
-                class="pt-input"
+                className="pt-input"
                 placeholder="Card Number"
                 value={this.state.cardNumber}
                 onChange={this.handleInputChange}
               />
             </div>
-            <div class="pt-input-group pt-large">
-              <span class="pt-icon pt-icon-credit-card" />
+            <div className="pt-input-group pt-large">
+              <span className="pt-icon pt-icon-credit-card" />
               <input
                 name="cardSecurityCode"
                 type="text"
-                class="pt-input"
+                className="pt-input"
                 placeholder="Security Code"
                 value={this.state.cardSecurityCode}
                 onChange={this.handleInputChange}
               />
             </div>
-            <div class="pt-input-group pt-large">
-              <span class="pt-icon pt-icon-calendar" />
+            <div className="pt-input-group pt-large">
+              <span className="pt-icon pt-icon-calendar" />
               <input
                 name="expirationMonth"
                 type="text"
-                class="pt-input"
+                className="pt-input"
                 placeholder="Month"
                 value={this.state.expirationMonth}
                 onChange={this.handleInputChange}
               />
             </div>
-            <div class="pt-input-group pt-large">
-              <span class="pt-icon pt-icon-calendar" />
-              <input
+            <div className="pt-input-group pt-large">
+              <NumericInput
                 name="expirationYear"
-                type="text"
-                class="pt-input"
                 placeholder="Year"
+                leftIconName={"pt-icon-calendar"}
                 value={this.state.expirationYear}
-                onChange={this.handleInputChange}
+                onValueChange={this.handleValueChange}
+                buttonPosition={"none"}
               />
             </div>
             <input
-              class="pt-button pt-large pt-intent-primary"
+              className="pt-button pt-large pt-intent-primary"
               type="submit"
               value="Submit"
             />
