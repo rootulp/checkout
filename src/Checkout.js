@@ -39,48 +39,68 @@ class Checkout extends React.Component {
       <div className="Checkout">
         <span>{this.renderErrors()}</span>
         <form>
-
           <div class="pt-control-group pt-vertical">
             <div class="pt-input-group pt-large">
-              <span class="pt-icon pt-icon-person"></span>
-              <input name="name" type="text" class="pt-input" placeholder="Name" value={this.state.value} onChange={this.handleInputChange} />
+              <span class="pt-icon pt-icon-person" />
+              <input
+                name="name"
+                type="text"
+                class="pt-input"
+                placeholder="Name"
+                value={this.state.value}
+                onChange={this.handleInputChange}
+              />
             </div>
             <div class="pt-input-group pt-large">
-              <span class="pt-icon pt-icon-credit-card"></span>
-              <input name="cardNumber" type="text" class="pt-input" placeholder="Card Number" value={this.state.cardNumber} onChange={this.handleInputChange} />
+              <span class="pt-icon pt-icon-credit-card" />
+              <input
+                name="cardNumber"
+                type="text"
+                class="pt-input"
+                placeholder="Card Number"
+                value={this.state.cardNumber}
+                onChange={this.handleInputChange}
+              />
             </div>
-            <button class="pt-button pt-large pt-intent-primary">Login</button>
+            <div class="pt-input-group pt-large">
+              <span class="pt-icon pt-icon-credit-card" />
+              <input
+                name="cardSecurityCode"
+                type="text"
+                class="pt-input"
+                placeholder="Security Code"
+                value={this.state.cardSecurityCode}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div class="pt-input-group pt-large">
+              <span class="pt-icon pt-icon-calendar" />
+              <input
+                name="expirationMonth"
+                type="text"
+                class="pt-input"
+                placeholder="Month"
+                value={this.state.expirationMonth}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div class="pt-input-group pt-large">
+              <span class="pt-icon pt-icon-calendar" />
+              <input
+                name="expirationYear"
+                type="text"
+                class="pt-input"
+                placeholder="Year"
+                value={this.state.expirationYear}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <input
+              class="pt-button pt-large pt-intent-primary"
+              type="submit"
+              value="Submit"
+            />
           </div>
-          <label>
-            Card Security Code
-            <input
-              name="cardSecurityCode"
-              type="input"
-              value={this.state.cardSecurityCode}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            Expiration Month
-            <input
-              name="expirationMonth"
-              type="input"
-              value={this.state.expirationMonth}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <label>
-            Expiration Year
-            <input
-              name="expirationYear"
-              type="input"
-              value={this.state.expirationYear}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <input type="submit" value="Submit" />
         </form>
       </div>
     );
