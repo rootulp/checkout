@@ -26,8 +26,8 @@ class Checkout extends React.Component {
     }
     if (
       !validCardExpiration(
-        this.state.expirationMonth,
-        this.state.expirationYear
+        this.state.expirationYear,
+        this.state.expirationMonth
       )
     ) {
       return "Invalid Expiration Date";

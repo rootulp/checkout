@@ -44,7 +44,7 @@ export const validAmericanExpressCardSecurityCode = cardSecurityCode => {
   return cardSecurityCode ? cardSecurityCode.length === 4 : false;
 };
 
-export const validCardExpiration = (expirationMonth, expirationYear) => {
+export const validCardExpiration = (expirationYear, expirationMonth) => {
   const expirationDate = new Date(expirationYear, expirationMonth);
   const today = new Date();
 

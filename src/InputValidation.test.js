@@ -2,7 +2,8 @@ import {
   validVisaCardNumber,
   validVisaCardSecurityCode,
   validAmericanExpressCardNumber,
-  validAmericanExpressCardSecurityCode
+  validAmericanExpressCardSecurityCode,
+  validCardExpiration
 } from "./InputValidation";
 
 describe("Visa", () => {
@@ -38,5 +39,33 @@ describe("American Express", () => {
 
   test("123 is an invalid card security code", () => {
     expect(validAmericanExpressCardSecurityCode("123")).toBeFalsy();
+  });
+});
+
+describe("Card expiration", () => {
+  const today = new Date();
+
+  test("next month is valid", () => {
+    expect(
+      validCardExpiration(today.getFullYear(), today.getMonth() + 1)
+    ).toBeTruthy();
+  });
+
+  test("next year is valid", () => {
+    expect(
+      validCardExpiration(today.getFullYear() + 1, today.getMonth())
+    ).toBeTruthy();
+  });
+
+  test("last month is invalid", () => {
+    expect(
+      validCardExpiration(today.getFullYear(), today.getMonth() - 1)
+    ).toBeFalsy();
+  });
+
+  test("last year is invalid", () => {
+    expect(
+      validCardExpiration(today.getFullYear() - 1, today.getMonth())
+    ).toBeFalsy();
   });
 });
