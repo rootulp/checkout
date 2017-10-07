@@ -7,7 +7,7 @@ class Checkout extends React.Component {
     this.state = {
       name: "",
       cardNumber: "",
-      csc: "",
+      cardSecurityCode: "",
       expirationMonth: "",
       expirationYear: ""
     };
@@ -21,7 +21,7 @@ class Checkout extends React.Component {
   }
 
   renderErrors() {
-    if (!validCardNumber(this.state.cardNumber, this.state.csc)) {
+    if (!validCardNumber(this.state.cardNumber, this.state.cardSecurityCode)) {
       return "Invalid Card Number"
     }
     if (!validCardExpiration(this.state.expirationMonth, this.state.expirationYear)) {
@@ -53,11 +53,11 @@ class Checkout extends React.Component {
           </label>
           <br />
           <label>
-            csc
+            Card Security Code
             <input
-              name="csc"
+              name="cardSecurityCode"
               type="input"
-              value={this.state.csc}
+              value={this.state.cardSecurityCode}
               onChange={this.handleInputChange} />
           </label>
           <br />
@@ -85,16 +85,16 @@ class Checkout extends React.Component {
   }
 }
 
-const validCardNumber = (cardNumber, csc) => {
-  return validVisa(cardNumber, csc) || validAmericanExpress(cardNumber, csc)
+const validCardNumber = (cardNumber, cardSecurityCode) => {
+  return validVisa(cardNumber, cardSecurityCode) || validAmericanExpress(cardNumber, cardSecurityCode)
 }
 
-const validVisa = (cardNumber, csc) => {
-  return validVisaCardNumber(cardNumber) && validVisaCsc(csc);
+const validVisa = (cardNumber, cardSecurityCode) => {
+  return validVisaCardNumber(cardNumber) && validVisaCardSecurityCode(cardSecurityCode);
 }
 
-const validAmericanExpress = (cardNumber, csc) => {
-  return validAmericanExpressCardNumber(cardNumber) && validAmericanExpressCsc(csc);
+const validAmericanExpress = (cardNumber, cardSecurityCode) => {
+  return validAmericanExpressCardNumber(cardNumber) && validAmericanExpressCardSecurityCode(cardSecurityCode);
 }
 
 const validVisaCardNumber = (cardNumber) => {
@@ -113,16 +113,20 @@ const validAmericanExpressCardNumber = (cardNumber) => {
   return false
 }
 
-const validVisaCsc = (csc) => {
-  return csc ? csc.length === 4 : false
+const validVisaCardSecurityCode = (cardSecurityCode) => {
+  return cardSecurityCode ? cardSecurityCode.length === 4 : false
 }
 
-const validAmericanExpressCsc = (csc) => {
-  return csc ? csc.length === 3 : false
+const validAmericanExpressCardSecurityCode = (cardSecurityCode) => {
+  console.log(cardSecurityCode.length)
+  return cardSecurityCode ? cardSecurityCode.length === 3 : false
 }
 
 const validCardExpiration = (expirationMonth, expirationYear) => {
-  return true
+  const expirationDate = new Date(expirationYear, expirationMonth)
+  const today = new Date()
+
+  return today < expirationDate;
 }
 
 export default Checkout;
