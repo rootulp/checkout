@@ -2,6 +2,8 @@ import React from "react";
 import { NumericInput } from "@blueprintjs/core";
 import { validCardNumber, validCardExpiration } from "./InputValidation";
 
+export const MAX_CARD_NUMBER_LENGTH = 16;
+
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
@@ -14,12 +16,21 @@ class Checkout extends React.Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
   }
 
   handleInputChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     });
+  }
+
+  handleCardNumberChange(event) {
+    if (event.target.value.length < MAX_CARD_NUMBER_LENGTH) {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
   }
 
   disableSubmit() {
@@ -70,7 +81,7 @@ class Checkout extends React.Component {
                 className="pt-input"
                 placeholder="Card Number"
                 value={this.state.cardNumber}
-                onChange={this.handleInputChange}
+                onChange={this.handleCardNumberChange}
               />
             </div>
             <div className="pt-input-group pt-large">
