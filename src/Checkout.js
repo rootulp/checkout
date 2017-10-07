@@ -39,26 +39,18 @@ class Checkout extends React.Component {
       <div className="Checkout">
         <span>{this.renderErrors()}</span>
         <form>
-          <label>
-            Name
-            <input
-              name="name"
-              type="input"
-              checked={this.state.name}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
-          <label>
-            Card Number
-            <input
-              name="cardNumber"
-              type="input"
-              value={this.state.cardNumber}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <br />
+
+          <div class="pt-control-group pt-vertical">
+            <div class="pt-input-group pt-large">
+              <span class="pt-icon pt-icon-person"></span>
+              <input name="name" type="text" class="pt-input" placeholder="Name" value={this.state.value} onChange={this.handleInputChange} />
+            </div>
+            <div class="pt-input-group pt-large">
+              <span class="pt-icon pt-icon-credit-card"></span>
+              <input name="cardNumber" type="text" class="pt-input" placeholder="Card Number" value={this.state.cardNumber} onChange={this.handleInputChange} />
+            </div>
+            <button class="pt-button pt-large pt-intent-primary">Login</button>
+          </div>
           <label>
             Card Security Code
             <input
