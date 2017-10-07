@@ -14,7 +14,6 @@ class Checkout extends React.Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleValueChange = this.handleValueChange.bind(this);
   }
 
   handleInputChange(event) {
@@ -94,13 +93,14 @@ class Checkout extends React.Component {
               />
             </div>
             <div className="pt-input-group pt-large">
-              <NumericInput
+              <span className="pt-icon pt-icon-calendar" />
+              <input
                 name="expirationYear"
+                type="text"
+                className="pt-input"
                 placeholder="Year"
-                leftIconName={"pt-icon-calendar"}
                 value={this.state.expirationYear}
-                onValueChange={this.handleValueChange}
-                buttonPosition={"none"}
+                onChange={this.handleInputChange}
               />
             </div>
             <input
