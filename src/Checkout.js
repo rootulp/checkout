@@ -84,15 +84,6 @@ class Checkout extends React.Component {
     console.log(this.state.visited);
   };
 
-  disableSubmit() {
-    return !validCardNumber(
-      this.state.cardNumber,
-      this.state.cardSecurityCode,
-      this.state.expirationYear,
-      this.state.expirationMonth
-    );
-  }
-
   render() {
     return (
       <div className="Checkout">
