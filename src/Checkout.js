@@ -46,16 +46,34 @@ class Checkout extends React.Component {
 
   errorsForName() {
     if (this.state.visited.name && !this.state.name) {
-      return "Please input your name"
+      return "Please input your name";
     }
-    return false
+    return false;
+  }
+
+  errorsForExpiration() {
+    if (
+      this.state.visited.expirationYear &&
+      this.state.visited.expirationMonth &&
+      !validCardExpiration(
+        this.state.expirationYear,
+        this.state.expirationMonth
+      )
+    ) {
+      return "Invalid expiration";
+    }
+    return false;
   }
 
   errorsForCard() {
-    if (this.state.visited.cardNumber && this.state.visited.cardSecurityCode && !validCardNumber(this.state.cardNumber, this.state.cardSecurityCode)) {
-      return "Invalid card"
+    if (
+      this.state.visited.cardNumber &&
+      this.state.visited.cardSecurityCode &&
+      !validCardNumber(this.state.cardNumber, this.state.cardSecurityCode)
+    ) {
+      return "Invalid card";
     }
-    return false
+    return false;
   }
 
   handleBlur = field => event => {
@@ -141,7 +159,9 @@ class Checkout extends React.Component {
                 onBlur={this.handleBlur("expirationYear")}
               />
             </div>
-
+            <div className="pt-form-helper-text">
+              {this.errorsForExpiration()}
+            </div>
             <input
               className={
                 "pt-button pt-large pt-intent-primary " +
