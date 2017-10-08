@@ -32,9 +32,15 @@ class Checkout extends React.Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
-    this.handleCardSecurityCodeChange = this.handleCardSecurityCodeChange.bind(this);
-    this.handleExpirationYearChange = this.handleExpirationYearChange.bind(this);
-    this.handleExpirationMonthChange = this.handleExpirationMonthChange.bind(this);
+    this.handleCardSecurityCodeChange = this.handleCardSecurityCodeChange.bind(
+      this
+    );
+    this.handleExpirationYearChange = this.handleExpirationYearChange.bind(
+      this
+    );
+    this.handleExpirationMonthChange = this.handleExpirationMonthChange.bind(
+      this
+    );
   }
 
   handleInputChange(event) {
@@ -66,7 +72,7 @@ class Checkout extends React.Component {
       });
     }
   }
-  
+
   handleExpirationMonthChange(event) {
     if (event.target.value.length <= MAX_EXPIRATION_MONTH_LENGTH) {
       this.setState({
@@ -77,23 +83,30 @@ class Checkout extends React.Component {
 
   errorsForName() {
     if (this.state.visited.name && !this.state.name) {
-      return "Invalid name";
+      return "Please provide your name";
     }
     return false;
   }
 
   errorsForExpiration() {
     if (
-      this.state.visited.expirationYear &&
-      this.state.visited.expirationMonth &&
+      !this.state.visited.expirationYear ||
+      !this.state.visited.expirationMonth
+    ) {
+      return false;
+    }
+    if (!this.state.expirationMonth) {
+      return "Please provide an expiration month";
+    } else if (!this.state.expirationYear) {
+      return "Please provide an expiration year";
+    } else if (
       !validCardExpiration(
         this.state.expirationYear,
         this.state.expirationMonth
       )
     ) {
-      return "Invalid expiration";
+      return "The provided credit card is expired";
     }
-    return false;
   }
 
   errorsForCard() {
