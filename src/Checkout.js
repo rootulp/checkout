@@ -1,7 +1,10 @@
 import React from "react";
-import _ from "lodash";
-import { NumericInput } from "@blueprintjs/core";
-import { validCardNumber, validCardExpiration } from "./InputValidation";
+import classNames from "classnames";
+import {
+  validate,
+  validCardNumber,
+  validCardExpiration
+} from "./InputValidation";
 
 export const MAX_CARD_NUMBER_LENGTH = 16;
 
@@ -13,7 +16,14 @@ class Checkout extends React.Component {
       cardNumber: "",
       cardSecurityCode: "",
       expirationMonth: "",
-      expirationYear: ""
+      expirationYear: "",
+      visited: {
+        name: false,
+        cardNumber: false,
+        cardSecurityCode: false,
+        expirationMonth: false,
+        expirationYear: false
+      }
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -34,6 +44,20 @@ class Checkout extends React.Component {
     }
   }
 
+  errorsForName() {
+    if (!this.state.name && this.state.visited.name) {
+      return "Please input your name"
+    }
+    return false
+  }
+
+  handleBlur = field => event => {
+    this.setState({
+      visited: { ...this.state.visited, [field]: true }
+    });
+    console.log(this.state.visited);
+  };
+
   disableSubmit() {
     return !validCardNumber(
       this.state.cardNumber,
@@ -43,24 +67,9 @@ class Checkout extends React.Component {
     );
   }
 
-  renderErrors() {
-    if (!validCardNumber(this.state.cardNumber, this.state.cardSecurityCode)) {
-      return "Invalid Card Number";
-    }
-    if (
-      !validCardExpiration(
-        this.state.expirationYear,
-        this.state.expirationMonth
-      )
-    ) {
-      return "Invalid Expiration Date";
-    }
-  }
-
   render() {
     return (
       <div className="Checkout">
-        <span>{this.renderErrors()}</span>
         <form>
           <div className="pt-control-group pt-vertical">
             <div className="pt-input-group pt-large">
@@ -68,11 +77,13 @@ class Checkout extends React.Component {
               <input
                 name="name"
                 type="text"
-                className="pt-input"
+                className={classNames("pt-input")}
                 placeholder="Name"
                 value={this.state.value}
                 onChange={this.handleInputChange}
+                onBlur={this.handleBlur("name")}
               />
+              <div className="pt-form-helper-text">{this.errorsForName()}</div>
             </div>
             <div className="pt-input-group pt-large">
               <span className="pt-icon pt-icon-credit-card" />
@@ -83,6 +94,7 @@ class Checkout extends React.Component {
                 placeholder="Card Number"
                 value={this.state.cardNumber}
                 onChange={this.handleCardNumberChange}
+                onBlur={this.handleBlur("cardNumber")}
               />
             </div>
             <div className="pt-input-group pt-large">
@@ -94,6 +106,7 @@ class Checkout extends React.Component {
                 placeholder="Security Code"
                 value={this.state.cardSecurityCode}
                 onChange={this.handleInputChange}
+                onBlur={this.handleBlur("cardSecurityCode")}
               />
             </div>
             <div className="pt-input-group pt-large">
@@ -105,6 +118,7 @@ class Checkout extends React.Component {
                 placeholder="Month"
                 value={this.state.expirationMonth}
                 onChange={this.handleInputChange}
+                onBlur={this.handleBlur("expirationMonth")}
               />
             </div>
             <div className="pt-input-group pt-large">
@@ -116,6 +130,7 @@ class Checkout extends React.Component {
                 placeholder="Year"
                 value={this.state.expirationYear}
                 onChange={this.handleInputChange}
+                onBlur={this.handleBlur("expirationYear")}
               />
             </div>
 
