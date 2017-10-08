@@ -95,7 +95,7 @@ class Checkout extends React.Component {
   render() {
     return (
       <div className="Checkout">
-        <form>
+        <form className="center">
           <div className="pt-control-group pt-vertical">
             <div className="pt-input-group pt-large">
               <span className="pt-icon pt-icon-person" />

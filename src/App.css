@@ -1,6 +1,13 @@
 .App {
   text-align: center;
 }
+
 .pt-control-group {
   width: 300px;
+}
+
+form {
+  margin: auto;
+  width:300px;
+  padding-top: 100px;
 }
