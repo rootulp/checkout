@@ -8,6 +8,9 @@ import {
 } from "./InputValidation";
 
 export const MAX_CARD_NUMBER_LENGTH = 16;
+export const MAX_CARD_SECURITY_CODE_LENGTH = 4;
+export const MAX_EXPIRATION_YEAR_LENGTH = 4;
+export const MAX_EXPIRATION_MONTH_LENGTH = 2;
 
 class Checkout extends React.Component {
   constructor(props) {
@@ -29,6 +32,9 @@ class Checkout extends React.Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCardNumberChange = this.handleCardNumberChange.bind(this);
+    this.handleCardSecurityCodeChange = this.handleCardSecurityCodeChange.bind(this);
+    this.handleExpirationYearChange = this.handleExpirationYearChange.bind(this);
+    this.handleExpirationMonthChange = this.handleExpirationMonthChange.bind(this);
   }
 
   handleInputChange(event) {
@@ -39,6 +45,30 @@ class Checkout extends React.Component {
 
   handleCardNumberChange(event) {
     if (event.target.value.length <= MAX_CARD_NUMBER_LENGTH) {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
+  }
+
+  handleCardSecurityCodeChange(event) {
+    if (event.target.value.length <= MAX_CARD_SECURITY_CODE_LENGTH) {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
+  }
+
+  handleExpirationYearChange(event) {
+    if (event.target.value.length <= MAX_EXPIRATION_YEAR_LENGTH) {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
+  }
+  
+  handleExpirationMonthChange(event) {
+    if (event.target.value.length <= MAX_EXPIRATION_MONTH_LENGTH) {
       this.setState({
         [event.target.name]: event.target.value
       });
@@ -136,7 +166,7 @@ class Checkout extends React.Component {
                 placeholder="Security Code"
                 leftIconName={"pt-icon-credit-card"}
                 value={this.state.cardSecurityCode}
-                onChange={this.handleInputChange}
+                onChange={this.handleCardSecurityCodeChange}
                 onBlur={this.handleBlur("cardSecurityCode")}
               />
               {/* </div> */}
@@ -159,7 +189,7 @@ class Checkout extends React.Component {
                 placeholder="Month"
                 leftIconName="pt-icon-calendar"
                 value={this.state.expirationMonth}
-                onChange={this.handleInputChange}
+                onChange={this.handleExpirationMonthChange}
                 onBlur={this.handleBlur("expirationMonth")}
               />
               <InputGroup
@@ -168,7 +198,7 @@ class Checkout extends React.Component {
                 placeholder="Year"
                 leftIconName="pt-icon-calendar"
                 value={this.state.expirationYear}
-                onChange={this.handleInputChange}
+                onChange={this.handleExpirationYearChange}
                 onBlur={this.handleBlur("expirationYear")}
               />
               <span className="pt-form-helper-text">
