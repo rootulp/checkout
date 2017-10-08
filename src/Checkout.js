@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { InputGroup } from "@blueprintjs/core";
 import {
   validate,
   validCardNumber,
@@ -108,12 +109,11 @@ class Checkout extends React.Component {
                 }
               )}
             >
-              <span className="pt-icon pt-icon-person" />
-              <input
+              <InputGroup
                 name="name"
                 type="text"
-                className={classNames("pt-input")}
                 placeholder="Name"
+                leftIconName={"pt-icon-person"}
                 value={this.state.value}
                 onChange={this.handleInputChange}
                 onBlur={this.handleBlur("name")}
