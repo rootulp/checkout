@@ -97,7 +97,11 @@ class Checkout extends React.Component {
       <div className="Checkout">
         <form className="center">
           <div className="pt-control-group pt-vertical">
-            <div className="pt-input-group pt-large">
+            <div
+              className={classNames("pt-input-group", "pt-large", {
+                "pt-intent-danger": this.errorsForName()
+              })}
+            >
               <span className="pt-icon pt-icon-person" />
               <input
                 name="name"
