@@ -38,7 +38,7 @@ class Checkout extends React.Component {
   }
 
   handleCardNumberChange(event) {
-    if (event.target.value.length < MAX_CARD_NUMBER_LENGTH) {
+    if (event.target.value.length <= MAX_CARD_NUMBER_LENGTH) {
       this.setState({
         [event.target.name]: event.target.value
       });
@@ -96,7 +96,7 @@ class Checkout extends React.Component {
   render() {
     return (
       <div className="Checkout">
-        <form>
+        <form action="/example-form-handler" method="post">
           <div className="pt-control-group pt-vertical">
             <div
               className={classNames(
