@@ -104,9 +104,7 @@ class Checkout extends React.Component {
                 "pt-form-content",
                 "pt-input-group",
                 "pt-large",
-                {
-                  "pt-intent-danger": this.errorsForName()
-                }
+                { "pt-intent-danger": this.errorsForName() }
               )}
             >
               <InputGroup
@@ -129,9 +127,7 @@ class Checkout extends React.Component {
                 "pt-form-content",
                 "pt-input-group",
                 "pt-large",
-                {
-                  "pt-intent-danger": this.errorsForCard()
-                }
+                { "pt-intent-danger": this.errorsForCard() }
               )}
             >
               <InputGroup
@@ -143,47 +139,50 @@ class Checkout extends React.Component {
                 onChange={this.handleCardNumberChange}
                 onBlur={this.handleBlur("cardNumber")}
               />
-              <div className="pt-input-group pt-large">
-                <InputGroup
-                  name="cardSecurityCode"
-                  type="text"
-                  placeholder="Security Code"
-                  leftIconName={"pt-icon-credit-card"}
-                  value={this.state.cardSecurityCode}
-                  onChange={this.handleInputChange}
-                  onBlur={this.handleBlur("cardSecurityCode")}
-                />
-              </div>
+              <InputGroup
+                name="cardSecurityCode"
+                type="text"
+                placeholder="Security Code"
+                leftIconName={"pt-icon-credit-card"}
+                value={this.state.cardSecurityCode}
+                onChange={this.handleInputChange}
+                onBlur={this.handleBlur("cardSecurityCode")}
+              />
+              {/* </div> */}
               <span className="pt-form-helper-text">
                 {this.errorsForCard()}
               </span>
             </div>
-            <div className="pt-input-group pt-large">
-              <span className="pt-icon pt-icon-calendar" />
-              <input
+            <div
+              className={classNames(
+                "pt-form-group",
+                "pt-form-content",
+                "pt-input-group",
+                "pt-large",
+                { "pt-intent-danger": this.errorsForExpiration() }
+              )}
+            >
+              <InputGroup
                 name="expirationMonth"
                 type="text"
-                className="pt-input"
                 placeholder="Month"
+                leftIconName="pt-icon-calendar"
                 value={this.state.expirationMonth}
                 onChange={this.handleInputChange}
                 onBlur={this.handleBlur("expirationMonth")}
               />
-            </div>
-            <div className="pt-input-group pt-large">
-              <span className="pt-icon pt-icon-calendar" />
-              <input
+              <InputGroup
                 name="expirationYear"
                 type="text"
-                className="pt-input"
                 placeholder="Year"
+                leftIconName="pt-icon-calendar"
                 value={this.state.expirationYear}
                 onChange={this.handleInputChange}
                 onBlur={this.handleBlur("expirationYear")}
               />
-            </div>
-            <div className="pt-form-helper-text">
-              {this.errorsForExpiration()}
+              <span className="pt-form-helper-text">
+                {this.errorsForExpiration()}
+              </span>
             </div>
             <input
               className="pt-button pt-large pt-intent-primary"
