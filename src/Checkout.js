@@ -47,7 +47,7 @@ class Checkout extends React.Component {
 
   errorsForName() {
     if (this.state.visited.name && !this.state.name) {
-      return "Please input your name";
+      return "Invalid name";
     }
     return false;
   }
