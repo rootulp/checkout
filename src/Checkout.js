@@ -163,10 +163,7 @@ class Checkout extends React.Component {
               {this.errorsForExpiration()}
             </div>
             <input
-              className={
-                "pt-button pt-large pt-intent-primary " +
-                (this.disableSubmit ? "pt-disabled" : "")
-              }
+              className="pt-button pt-large pt-intent-primary"
               type="submit"
               value="Submit"
             />
