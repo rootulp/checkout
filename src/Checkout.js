@@ -122,30 +122,41 @@ class Checkout extends React.Component {
                 {this.errorsForName()}
               </span>
             </div>
-            <div className="pt-input-group pt-large">
-              <span className="pt-icon pt-icon-credit-card" />
-              <input
+
+            <div
+              className={classNames(
+                "pt-form-group",
+                "pt-form-content",
+                "pt-input-group",
+                "pt-large",
+                {
+                  "pt-intent-danger": this.errorsForCard()
+                }
+              )}
+            >
+              <InputGroup
                 name="cardNumber"
                 type="text"
-                className="pt-input"
                 placeholder="Card Number"
+                leftIconName={"pt-icon-credit-card"}
                 value={this.state.cardNumber}
                 onChange={this.handleCardNumberChange}
                 onBlur={this.handleBlur("cardNumber")}
               />
-              <div className="pt-form-helper-text">{this.errorsForCard()}</div>
-            </div>
-            <div className="pt-input-group pt-large">
-              <span className="pt-icon pt-icon-credit-card" />
-              <input
-                name="cardSecurityCode"
-                type="text"
-                className="pt-input"
-                placeholder="Security Code"
-                value={this.state.cardSecurityCode}
-                onChange={this.handleInputChange}
-                onBlur={this.handleBlur("cardSecurityCode")}
-              />
+              <div className="pt-input-group pt-large">
+                <InputGroup
+                  name="cardSecurityCode"
+                  type="text"
+                  placeholder="Security Code"
+                  leftIconName={"pt-icon-credit-card"}
+                  value={this.state.cardSecurityCode}
+                  onChange={this.handleInputChange}
+                  onBlur={this.handleBlur("cardSecurityCode")}
+                />
+              </div>
+              <span className="pt-form-helper-text">
+                {this.errorsForCard()}
+              </span>
             </div>
             <div className="pt-input-group pt-large">
               <span className="pt-icon pt-icon-calendar" />
