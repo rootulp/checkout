@@ -88,27 +88,6 @@ class Checkout extends React.Component {
     return false;
   }
 
-  errorsForExpiration() {
-    if (
-      !this.state.visited.expirationYear ||
-      !this.state.visited.expirationMonth
-    ) {
-      return false;
-    }
-    if (!this.state.expirationMonth) {
-      return "Please provide an expiration month";
-    } else if (!this.state.expirationYear) {
-      return "Please provide an expiration year";
-    } else if (
-      !validCardExpiration(
-        this.state.expirationYear,
-        this.state.expirationMonth
-      )
-    ) {
-      return "The provided credit card is expired";
-    }
-  }
-
   errorsForCard() {
     if (
       this.state.visited.cardNumber &&
@@ -119,6 +98,27 @@ class Checkout extends React.Component {
     }
     return false;
   }
+
+  errorsForExpiration() {
+    if (
+      !this.state.visited.expirationYear ||
+      !this.state.visited.expirationMonth
+    ) {
+      return false;
+    } else if (!this.state.expirationMonth) {
+      return "Please provide an expiration month";
+    } else if (!this.state.expirationYear) {
+      return "Please provide an expiration year";
+    } else if (
+      !validCardExpiration(
+        this.state.expirationYear,
+        this.state.expirationMonth
+      )
+    ) {
+      return "This credit card is expired";
+    }
+  }
+
 
   handleBlur = field => event => {
     this.setState({
