@@ -153,7 +153,7 @@ class Checkout extends React.Component {
             >
               <InputGroup
                 name="cardNumber"
-                type="text"
+                type="number"
                 placeholder="Card Number"
                 leftIconName={"pt-icon-credit-card"}
                 value={this.state.cardNumber}
@@ -162,7 +162,7 @@ class Checkout extends React.Component {
               />
               <InputGroup
                 name="cardSecurityCode"
-                type="text"
+                type="number"
                 placeholder="Security Code"
                 leftIconName={"pt-icon-credit-card"}
                 value={this.state.cardSecurityCode}
@@ -185,7 +185,7 @@ class Checkout extends React.Component {
             >
               <InputGroup
                 name="expirationMonth"
-                type="text"
+                type="number"
                 placeholder="Month"
                 leftIconName="pt-icon-calendar"
                 value={this.state.expirationMonth}
@@ -194,7 +194,7 @@ class Checkout extends React.Component {
               />
               <InputGroup
                 name="expirationYear"
-                type="text"
+                type="number"
                 placeholder="Year"
                 leftIconName="pt-icon-calendar"
                 value={this.state.expirationYear}
