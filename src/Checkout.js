@@ -45,8 +45,15 @@ class Checkout extends React.Component {
   }
 
   errorsForName() {
-    if (!this.state.name && this.state.visited.name) {
+    if (this.state.visited.name && !this.state.name) {
       return "Please input your name"
+    }
+    return false
+  }
+
+  errorsForCard() {
+    if (this.state.visited.cardNumber && this.state.visited.cardSecurityCode && !validCardNumber(this.state.cardNumber, this.state.cardSecurityCode)) {
+      return "Invalid card"
     }
     return false
   }
@@ -96,6 +103,7 @@ class Checkout extends React.Component {
                 onChange={this.handleCardNumberChange}
                 onBlur={this.handleBlur("cardNumber")}
               />
+              <div className="pt-form-helper-text">{this.errorsForCard()}</div>
             </div>
             <div className="pt-input-group pt-large">
               <span className="pt-icon pt-icon-credit-card" />
