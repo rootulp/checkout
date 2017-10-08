@@ -118,7 +118,9 @@ class Checkout extends React.Component {
                 onChange={this.handleInputChange}
                 onBlur={this.handleBlur("name")}
               />
-              <div className="pt-form-helper-text">{this.errorsForName()}</div>
+              <span className="pt-form-helper-text">
+                {this.errorsForName()}
+              </span>
             </div>
             <div className="pt-input-group pt-large">
               <span className="pt-icon pt-icon-credit-card" />
