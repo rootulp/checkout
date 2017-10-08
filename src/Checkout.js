@@ -97,28 +97,28 @@ class Checkout extends React.Component {
       <div className="Checkout">
         <form>
           <div className="pt-control-group pt-vertical">
-            <div className="pt-form-group pt-form-content">
-              <div className="pt-form-content">
-                <div
-                  className={classNames("pt-input-group", "pt-large", {
-                    "pt-intent-danger": this.errorsForName()
-                  })}
-                >
-                  <span className="pt-icon pt-icon-person" />
-                  <input
-                    name="name"
-                    type="text"
-                    className={classNames("pt-input")}
-                    placeholder="Name"
-                    value={this.state.value}
-                    onChange={this.handleInputChange}
-                    onBlur={this.handleBlur("name")}
-                  />
-                  <div className="pt-form-helper-text">
-                    {this.errorsForName()}
-                  </div>
-                </div>
-              </div>
+            <div
+              className={classNames(
+                "pt-form-group",
+                "pt-form-content",
+                "pt-input-group",
+                "pt-large",
+                {
+                  "pt-intent-danger": this.errorsForName()
+                }
+              )}
+            >
+              <span className="pt-icon pt-icon-person" />
+              <input
+                name="name"
+                type="text"
+                className={classNames("pt-input")}
+                placeholder="Name"
+                value={this.state.value}
+                onChange={this.handleInputChange}
+                onBlur={this.handleBlur("name")}
+              />
+              <div className="pt-form-helper-text">{this.errorsForName()}</div>
             </div>
             <div className="pt-input-group pt-large">
               <span className="pt-icon pt-icon-credit-card" />
