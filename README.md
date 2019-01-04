@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/:license-mit-blue.svg)](https://rootulp.mit-license.org)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-> source code for [checkout](https://https://rootulp.github.io/checkout/) - a take home coding project
+> source code for [checkout](https://rootulp.github.io/checkout) - a take home coding project
 
 ## Questions
 > How long did you spend working on the problem? 
@@ -23,7 +23,7 @@ I implemented simple input validation that waits until a user has visited a fiel
 
 > What would an form submission/API payload of this look like? 
 
-Form submission sends data to the specified location via the HTTP method specified in the `<form>` tag. It looks like [this](https://www.dropbox.com/s/u9xd2hahhnu8r4i/Screen%20Shot%202017-10-08%20at%203.41.47%20AM.png?dl=0) 
+Form submission sends data to the specified location via the HTTP method specified in the `<form>` tag. It looks like [this](https://www.dropbox.com/s/u9xd2hahhnu8r4i/Screen%20Shot%202017-10-08%20at%203.41.47%20AM.png?dl=0).
 
 > How would you deal with validation errors that may come from that API response?
 
@@ -35,9 +35,9 @@ I implemented a few simple Jest tests for input validation. There are many more 
 
 > What are some styling and layout considerations for these types of form inputs?
 
-- Fields like month & year are short and can occupy less space (max four characters) than name and card number
-- Card number is variable length and properly splitting digits into groups could aid a user during input
-- Usually a card number will be filled out prior to a user reaching the CVC field. This means we could pre-emptively re-size the field according to the number of digits expected (based on card type).
+- Fields like month & year are short and can occupy less space (max four characters) than name and card number.
+- Card number is variable length and properly splitting digits into groups could aid a user during input.
+- Usually a card number will be filled out prior to a user reaching the CVC field. This means we could preemptively resize the field according to the number of digits expected (based on card type).
 
 ## License
 
